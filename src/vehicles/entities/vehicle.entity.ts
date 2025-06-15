@@ -6,26 +6,59 @@ export type VehicleDocument = Vehicle & Document;
 
 @Schema()
 export class Vehicle {
-  @Prop({
-    type: String,
-    default: () => uuidv4(),
-  })
-  _id: string; // UUID como id principal
+  @Prop({ type: String, default: () => uuidv4() })
+  _id: string;
 
   @Prop({ required: true })
-  name: string;
+  brand: string;
+
+  @Prop({ required: true })
+  model: string;
 
   @Prop()
-  brand: string;
+  version: string;
 
   @Prop()
   year: number;
 
   @Prop()
-  price: number;
+  kilometers: number;
 
   @Prop()
-  vehicleType: string;
+  hp: number;
+
+  @Prop()
+  cc: number;
+
+  @Prop()
+  color: string;
+
+  @Prop()
+  price: number;
+
+  @Prop({ enum: ['new', 'used'] })
+  condition: 'new' | 'used';
+
+  @Prop()
+  fuelType: string; // ou enum: ['gasoline', 'diesel', 'electric', etc.]
+
+  @Prop({ enum: ['manual', 'auto'] })
+  gearbox: 'manual' | 'auto';
+
+  @Prop()
+  vehicleType: string; // car, moto, truck
+
+  @Prop()
+  vehicleSegment: string; // ligeiro, pesado
+
+  @Prop()
+  raceprep: boolean;
+
+  @Prop()
+  autonomia: number;
+
+  @Prop()
+  consumo: number;
 
   @Prop([String])
   images: string[];
